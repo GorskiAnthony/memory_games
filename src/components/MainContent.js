@@ -34,12 +34,14 @@ const MainContent = ({ className }) => {
   }
   // Maintenant que j'ai mon tableau mélangé, je peux retourner son contenu sous forme de card.
 
+  console.log(cards[0]);
+
   return (
     <div className={className}>
       <div className="content">
         <div className="layout">
           {cards.map((card) => (
-            <Card key={card.id} content={card.content} />
+            <Card key={card.id} id={card.id} content={card.content} />
           ))}
           {/* <Card content="A" /> */}
         </div>

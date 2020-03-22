@@ -3,10 +3,10 @@ import { colors, pxToRem } from "./helpers";
 import { darken } from "polished";
 import styled from "styled-components";
 
-const Card = ({ className, content }) => {
+const Card = ({ className, content, id }) => {
   const [flip, setFlip] = useState("");
 
-  const handleClick = (event) => {
+  const handleClick = () => {
     flip === "" ? setFlip("is-flipped") : setFlip("");
   };
 
@@ -14,10 +14,10 @@ const Card = ({ className, content }) => {
 
   return (
     <div className={className} onClick={handleClick}>
-      <div className={`card ${flip}`}>
+      <div className={`card ${flip}`} data-id={id}>
         <div className="card__face card__face--front"></div>
-        <div className="card__face card__face--back" name={content}>
-          {content}
+        <div className="card__face card__face--back">
+          <p>{content}</p>
         </div>
       </div>
     </div>
@@ -40,7 +40,6 @@ export default styled(Card)`
   }
 
   .card__face {
-    line-height: ${pxToRem(100)};
     text-align: center;
     font-size: 40px;
     -webkit-backface-visibility: hidden;
