@@ -1,12 +1,15 @@
-import React from "react";
+import React, { memo } from "react";
 import { colors, pxToRem } from "../theme/helpers";
 import styled from "styled-components";
 import Card from "../theme/Card";
 import data from "../theme/data";
 
 const MainContent = ({ className }) => {
+  // Je factorise memoryLvl, je peux choise entre easy ou hard.
+  const memoryLvl = data.cardsEasy;
+
   // Je recupere la taille maximum du tableau CARDS
-  const cardLenght = data.cards.length;
+  const cardLenght = memoryLvl.length;
 
   // Ici, j'initialise 2 tableaux
   // uniqueKey : qui est un tableau vide, et qui me permet de recuperer une valeur unique
@@ -14,7 +17,7 @@ const MainContent = ({ className }) => {
   const uniqueKey = [];
   const cards = [];
 
-  // Ici je boucle tant que mon tableau uniqueKey n'est pas égale à mon tableau de base (data.cards)
+  // Ici je boucle tant que mon tableau uniqueKey n'est pas égale à mon tableau de base (data.cards*)
   while (uniqueKey.length < cardLenght) {
     // Génération d'un nombre aléatoire
     let r = Math.floor(Math.random() * cardLenght) + 1;
@@ -23,7 +26,7 @@ const MainContent = ({ className }) => {
     if (uniqueKey.indexOf(r) === -1) {
       cards.push({
         id: r,
-        content: data.cards[r - 1].content
+        content: memoryLvl[r - 1].content
       });
       // Et j'enregistre le nombre généré pour pas qu'il resorte plus tard.
       uniqueKey.push(r);

@@ -1,5 +1,5 @@
 export default {
-  cards: [
+  cardsHard: [
     {
       id: "1",
       content: "A"
@@ -47,6 +47,32 @@ export default {
     {
       id: "12",
       content: "F"
+    }
+  ],
+  cardsEasy: [
+    {
+      id: "1",
+      content: "A"
+    },
+    {
+      id: "2",
+      content: "A"
+    },
+    {
+      id: "3",
+      content: "B"
+    },
+    {
+      id: "4",
+      content: "B"
+    },
+    {
+      id: "5",
+      content: "C"
+    },
+    {
+      id: "6",
+      content: "C"
     }
   ]
 };
