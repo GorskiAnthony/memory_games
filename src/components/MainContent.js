@@ -40,6 +40,7 @@ const MainContent = ({ className }) => {
           {cards.map((card) => (
             <Card key={card.id} content={card.content} />
           ))}
+          {/* <Card content="A" /> */}
         </div>
       </div>
     </div>
