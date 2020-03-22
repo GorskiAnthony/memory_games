@@ -6,15 +6,19 @@ import styled from "styled-components";
 const Card = ({ className, content }) => {
   const [flip, setFlip] = useState("");
 
-  const handleClick = () => {
+  const handleClick = (event) => {
     flip === "" ? setFlip("is-flipped") : setFlip("");
   };
+
+  //console.log(content);
 
   return (
     <div className={className} onClick={handleClick}>
       <div className={`card ${flip}`}>
         <div className="card__face card__face--front"></div>
-        <div className="card__face card__face--back">{content}</div>
+        <div className="card__face card__face--back" name={content}>
+          {content}
+        </div>
       </div>
     </div>
   );
@@ -25,6 +29,10 @@ export default styled(Card)`
     transition: transform 1s;
     transform-style: preserve-3d;
     cursor: pointer;
+  }
+
+  .done {
+    display: none;
   }
 
   .card.is-flipped {

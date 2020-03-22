@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { colors, pxToRem } from "../theme/helpers";
 import styled from "styled-components";
 import Card from "../theme/Card";
@@ -32,9 +32,7 @@ const MainContent = ({ className }) => {
       uniqueKey.push(r);
     }
   }
-
   // Maintenant que j'ai mon tableau mélangé, je peux retourner son contenu sous forme de card.
-  //console.log(cards);
 
   return (
     <div className={className}>

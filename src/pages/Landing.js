@@ -4,10 +4,10 @@ import MainContent from "../components/MainContent";
 
 const Landing = () => {
   return (
-    <div>
+    <>
       <Header />
       <MainContent />
-    </div>
+    </>
   );
 };
 
