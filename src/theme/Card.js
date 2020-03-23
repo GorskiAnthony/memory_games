@@ -8,7 +8,7 @@ const Card = ({ className, content, id, idCard }) => {
 
   const handleClick = () => {
     flip === "" ? setFlip("is-flipped") : setFlip("");
-    idCard(id);
+    idCard(content);
   };
 
   //console.log(content);

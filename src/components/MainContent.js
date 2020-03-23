@@ -15,25 +15,21 @@ const MainContent = ({ className }) => {
 
   const callbackCard = (idCard) => {
     card.push(idCard);
-    const twiceCard = card.filter(uniqueId);
+    // const twiceCard = card.filter(uniqueId);
 
-   
-    if(twiceCard[0] === ((+twiceCard[1]+1) || +twiceCard[1]-1)) {
+    //((+twiceCard[1]+1) || (+twiceCard[1]-1))
+    if(card[0] === card[1]) {
       console.log('Je suis dans la condition');
-      
+      console.log(card);
       card.length = 0;
-    } else if (twiceCard.length >= 2) {
-      console.log('tableau vide car 2 carte selectionné');
+
+    } else if (card.length >= 2) {
+      console.log('tableau vide car 2 carte selectionné non identique');
+      console.log(card);
         card.length = 0;
+
     }
 
-    // if(twiceCard[0] === ((+twiceCard[1]+1) || +twiceCard[1]-1))
-    // {
-    //   
-    // }
-
-
-    console.log(twiceCard);
   }
 
 
