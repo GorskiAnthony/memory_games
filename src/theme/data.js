@@ -49,7 +49,7 @@ export default {
       content: "F"
     }
   ],
-  cardsEasy: [
+  cardsMedium: [
     {
       id: "1",
       content: "A"
@@ -73,6 +73,42 @@ export default {
     {
       id: "6",
       content: "C"
+    },
+    {
+      id: "8",
+      content: "D"
+    },
+    {
+      id: "8",
+      content: "D"
+    }
+  ],
+  cardsEasy: [
+    {
+      id: "1",
+      content: "A"
+    },
+    {
+      id: "2",
+      content: "A"
+    },
+    {
+      id: "3",
+      content: "B"
+    },
+    {
+      id: "4",
+      content: "B"
+    }
+  ],
+  cardsTest : [
+    {
+      id: "1",
+      content: "A"
+    },
+    {
+      id: "2",
+      content: "A"
     }
   ]
 };

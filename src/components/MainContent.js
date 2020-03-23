@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { colors, pxToRem } from "../theme/helpers";
 import styled from "styled-components";
 import Card from "../theme/Card";
@@ -6,35 +6,39 @@ import data from "../theme/data";
 
 const MainContent = ({ className }) => {
 
-  let [card, setCard] = useState([]);
-
-
-  const uniqueId = (value, index, self) => {
-    return self.indexOf(value) === index;
+  const state = {
+    card: [],
+    pair: []
   }
 
   const callbackCard = (idCard) => {
-    card.push(idCard);
-    // const twiceCard = card.filter(uniqueId);
+    // Je recupere l'id de la carte choisis pour l'utilisateur
+    state.card.push(idCard);
 
-    //((+twiceCard[1]+1) || (+twiceCard[1]-1))
-    if(card[0] === card[1]) {
+    // Si la 1er carte est égale à la 2eme carte alors 
+    if(state.card[0] === state.card[1]) {
       console.log('Je suis dans la condition');
-      console.log(card);
-      card.length = 0;
+      // je recupere le couple pour qu'ils ne puissent plus être cliquable
+      state.pair.push([state.card[0], state.card[1]]);
 
-    } else if (card.length >= 2) {
+      // Et je re-initialise les cartes choisis
+      state.card.length = 0;
+
+    } else if (state.card.length >= 2) {
+      // Sinon si les 2 cartes selectionnées ne sont pas les mêmes alors 
       console.log('tableau vide car 2 carte selectionné non identique');
-      console.log(card);
-        card.length = 0;
-
-    }
-
+      console.log(state.card);
+      // je reinitialise le tableau
+        state.card.length = 0;
+    }    
   }
 
-
-  // Je factorise memoryLvl, je peux choise entre easy ou hard.
-  const memoryLvl = data.cardsEasy;
+  // Je factorise memoryLvl, je peux choise entre :
+  // cardsHard
+  // cardsMedium
+  // cardsEasy
+  // cardsTest c'est que pour le test de mon apply
+  const memoryLvl = data.cardsTest;
 
   // Je recupere la taille maximum du tableau CARDS
   const cardLenght = memoryLvl.length;
@@ -68,7 +72,7 @@ const MainContent = ({ className }) => {
       <div className="content">
         <div className="layout">
           {cards.map((card) => (
-            <Card key={card.id} id={card.id} content={card.content} idCard={callbackCard}/>
+            <Card key={card.id} id={card.id} content={card.content} idCard={callbackCard} />
           ))}
           {/* <Card content="A" /> */}
         </div>
