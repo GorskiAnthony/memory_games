@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { colors, pxToRem } from "../theme/helpers";
 import styled from "styled-components";
 import Card from "../theme/Card";
 import data from "../theme/data";
 
 const MainContent = ({ className }) => {
+
+  let [card, setCard] = useState([]);
+
+
+  const uniqueId = (value, index, self) => {
+    return self.indexOf(value) === index;
+  }
+
+  const callbackCard = (idCard) => {
+    card.push(idCard);
+    const twiceCard = card.filter(uniqueId);
+
+   
+    if(twiceCard[0] === ((+twiceCard[1]+1) || +twiceCard[1]-1)) {
+      console.log('Je suis dans la condition');
+      
+      card.length = 0;
+    } else if (twiceCard.length >= 2) {
+      console.log('tableau vide car 2 carte selectionné');
+        card.length = 0;
+    }
+
+    // if(twiceCard[0] === ((+twiceCard[1]+1) || +twiceCard[1]-1))
+    // {
+    //   
+    // }
+
+
+    console.log(twiceCard);
+  }
+
+
   // Je factorise memoryLvl, je peux choise entre easy ou hard.
   const memoryLvl = data.cardsEasy;
 
@@ -34,14 +66,13 @@ const MainContent = ({ className }) => {
   }
   // Maintenant que j'ai mon tableau mélangé, je peux retourner son contenu sous forme de card.
 
-  console.log(cards[0]);
 
   return (
     <div className={className}>
       <div className="content">
         <div className="layout">
           {cards.map((card) => (
-            <Card key={card.id} id={card.id} content={card.content} />
+            <Card key={card.id} id={card.id} content={card.content} idCard={callbackCard}/>
           ))}
           {/* <Card content="A" /> */}
         </div>

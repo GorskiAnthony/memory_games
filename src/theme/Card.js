@@ -3,11 +3,12 @@ import { colors, pxToRem } from "./helpers";
 import { darken } from "polished";
 import styled from "styled-components";
 
-const Card = ({ className, content, id }) => {
+const Card = ({ className, content, id, idCard }) => {
   const [flip, setFlip] = useState("");
 
   const handleClick = () => {
     flip === "" ? setFlip("is-flipped") : setFlip("");
+    idCard(id);
   };
 
   //console.log(content);
